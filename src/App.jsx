@@ -14,7 +14,7 @@ const App = () => {
             <div className="w-8 h-8 rounded-full bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.6)] flex items-center justify-center animate-pulse">
               <Moon size={18} className="text-black" fill="currentColor" />
             </div>
-            <span className="text-2xl font-black tracking-tighter text-emerald-400 uppercase">TRACKOFIN</span>
+            <span className="text-2xl font-black tracking-tighter text-emerald-400 uppercase">TRACKO FIN</span>
           </div>
           <div className="flex gap-4 md:gap-8">
             <a 
