@@ -1,7 +1,37 @@
-import React from 'react';
-import { Moon, Shield, Zap, ArrowRight, Instagram, ExternalLink, MessageSquare, Vote, HelpCircle, Play, Globe, Lock } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Moon, ArrowRight, Instagram, ExternalLink, MessageSquare, Vote, HelpCircle, Play, Globe, Zap } from 'lucide-react';
 
 const App = () => {
+  // Tracking visibility of sections for scroll animations
+  const [visibleSections, setVisibleSections] = useState({});
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleSections((prev) => ({ ...prev, [entry.target.id]: true }));
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const sections = document.querySelectorAll('section');
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Utility to apply animation classes
+  const getAnimationClass = (id) => {
+    return `transition-all duration-1000 transform ${
+      visibleSections[id] 
+        ? 'opacity-100 translate-y-0' 
+        : 'opacity-0 translate-y-12'
+    }`;
+  };
+
   return (
     <div className="min-h-screen bg-[#050505] text-emerald-50 font-mono selection:bg-emerald-500 selection:text-black">
       {/* Dynamic Background Noise/Stardust Overlay */}
@@ -31,7 +61,7 @@ const App = () => {
       <main className="relative z-10 max-w-6xl mx-auto px-6 pt-16 pb-32">
         
         {/* The "Big Bang" Header */}
-        <section className="text-center relative py-20">
+        <section id="hero" className={`text-center relative py-20 ${getAnimationClass('hero')}`}>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-emerald-500/10 rounded-full blur-[120px]"></div>
           
           <h1 className="relative text-7xl md:text-[10rem] font-black leading-none tracking-tighter text-white mb-6">
@@ -47,7 +77,7 @@ const App = () => {
         </section>
 
         {/* Idea Overview Section */}
-        <section id="overview" className="mt-12 space-y-12">
+        <section id="overview" className={`mt-12 space-y-12 ${getAnimationClass('overview')}`}>
           <div className="p-8 md:p-12 border border-emerald-500/20 rounded-[3rem] bg-emerald-500/[0.02] backdrop-blur-sm">
             <h2 className="text-3xl md:text-5xl font-black text-emerald-400 mb-8 uppercase flex items-center gap-4">
               <span className="w-8 h-8 bg-emerald-500 rounded-full"></span>
@@ -66,7 +96,7 @@ const App = () => {
         </section>
 
         {/* Entry Protocol & Runtime Code Showcase */}
-        <section id="architecture" className="mt-32">
+        <section id="architecture" className={`mt-32 ${getAnimationClass('architecture')}`}>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h2 className="text-4xl font-black text-emerald-400 uppercase tracking-tighter">Connection Protocol</h2>
@@ -93,7 +123,6 @@ const App = () => {
                   <span className="text-[10px] text-emerald-500/50 uppercase font-bold tracking-[0.2em]">production_runtime.js</span>
                 </div>
                 <div className="p-6 space-y-4">
-                  {/* Start Sequence */}
                   <div>
                     <span className="text-emerald-500/40 font-bold block mb-1 underline text-xs">// Nightly Launch @ 21:00 IST</span>
                     <div className="flex gap-3">
@@ -102,7 +131,6 @@ const App = () => {
                     </div>
                   </div>
 
-                  {/* Active Link Sequence */}
                   <div className="bg-emerald-500/5 p-4 rounded-lg border border-emerald-500/10">
                     <span className="text-emerald-500/40 font-bold block mb-1 text-xs">// Secure Connection established</span>
                     <div className="flex gap-3 items-center">
@@ -118,13 +146,11 @@ const App = () => {
                     </div>
                   </div>
 
-                  {/* Wait Sequence */}
                   <div className="flex gap-3">
                     <span className="text-emerald-500 font-bold">[--:--]</span>
                     <span className="text-emerald-200">await participation_window();</span>
                   </div>
 
-                  {/* Purge Sequence */}
                   <div className="mt-4 pt-4 border-t border-emerald-500/10">
                     <span className="text-red-500/40 font-bold block mb-1 underline text-xs">// Purge Protocol @ 09:00 IST</span>
                     <div className="flex gap-3 items-center mb-2">
@@ -141,7 +167,7 @@ const App = () => {
         </section>
 
         {/* Use Cases / Examples Section */}
-        <section id="examples" className="mt-32">
+        <section id="examples" className={`mt-32 ${getAnimationClass('examples')}`}>
           <h2 className="text-4xl font-black text-center text-emerald-400 mb-16 uppercase tracking-widest">
             Nightly Experiences
           </h2>
@@ -176,7 +202,7 @@ const App = () => {
         </section>
 
         {/* Entertainment Disclaimer */}
-        <section className="mt-32 text-center max-w-2xl mx-auto p-10 border border-emerald-500/10 bg-emerald-900/5 rounded-3xl">
+        <section id="disclaimer" className={`mt-32 text-center max-w-2xl mx-auto p-10 border border-emerald-500/10 bg-emerald-900/5 rounded-3xl ${getAnimationClass('disclaimer')}`}>
           <Zap className="mx-auto text-emerald-500 mb-6" size={40} />
           <h2 className="text-2xl font-black text-white mb-4 uppercase">Entertainment Only</h2>
           <p className="text-emerald-100/60 leading-relaxed">
@@ -185,7 +211,7 @@ const App = () => {
         </section>
 
         {/* The Call to Action */}
-        <section id="follow" className="mt-40 text-center bg-gradient-to-b from-emerald-500/10 to-transparent p-16 rounded-[4rem] border border-emerald-500/10">
+        <section id="follow" className={`mt-40 text-center bg-gradient-to-b from-emerald-500/10 to-transparent p-16 rounded-[4rem] border border-emerald-500/10 ${getAnimationClass('follow')}`}>
           <h2 className="text-5xl font-black mb-8">Ready for tonight?</h2>
           <p className="text-emerald-100/60 mb-10 max-w-xl mx-auto uppercase tracking-tighter text-sm">
             We announce the nightly theme and live URL only on Instagram and WhatsApp.
@@ -222,10 +248,21 @@ const App = () => {
           </div>
           <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-emerald-500/5 text-xs text-emerald-500/40 gap-4">
             <p>© 2026 TRACKOFIN PROJECT. ALL DATA DELETED DAILY.</p>
-            <p className="flex items-center gap-2">MADE IN INDIA 🇮🇳 <span className="text-emerald-500 font-bold uppercase underline decoration-emerald-500/30">Entertainment Project</span></p>
+            <p className="flex items-center gap-3">MADE IN INDIA 🇮🇳 <span className="text-emerald-500 font-bold uppercase underline decoration-emerald-500/30">Entertainment Project</span></p>
           </div>
         </div>
       </footer>
+
+      {/* Animation Styles */}
+      <style>{`
+        @keyframes spin-slow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+          animation: spin-slow 10s linear infinite;
+        }
+      `}</style>
     </div>
   );
 };
