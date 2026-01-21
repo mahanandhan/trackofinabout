@@ -221,7 +221,7 @@ const App = () => {
             </div>
           </div>
           <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-emerald-500/5 text-xs text-emerald-500/40 gap-4">
-            <p>© 2024 TRACKOFIN PROJECT. ALL DATA DELETED DAILY.</p>
+            <p>© 2025 TRACKOFIN PROJECT. ALL DATA DELETED DAILY.</p>
             <p className="flex items-center gap-2">MADE IN INDIA 🇮🇳 <span className="text-emerald-500 font-bold uppercase underline decoration-emerald-500/30">Entertainment Project</span></p>
           </div>
         </div>
