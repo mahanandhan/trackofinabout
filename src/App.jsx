@@ -69,9 +69,9 @@ const App = () => {
           </h1>
           
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-2xl md:text-3xl font-bold italic text-emerald-200">
-            <span>LIVE 9:00 PM IST</span>
+            <span>LIVE 8:00 PM IST</span>
             <ArrowRight className="hidden md:block text-emerald-500" />
-            <span className="text-emerald-500/50 line-through">9:00 AM IST</span>
+            <span className="text-emerald-500/50 line-through">12:00 AM IST</span>
             <span className="text-red-500 bg-red-500/10 px-3 py-1 rounded border border-red-500/20 uppercase tracking-widest">Deleted</span>
           </div>
         </section>
@@ -124,9 +124,9 @@ const App = () => {
                 </div>
                 <div className="p-6 space-y-4">
                   <div>
-                    <span className="text-emerald-500/40 font-bold block mb-1 underline text-xs">// Nightly Launch @ 21:00 IST</span>
+                    <span className="text-emerald-500/40 font-bold block mb-1 underline text-xs">// Nightly Launch @ 20:00 IST</span>
                     <div className="flex gap-3">
-                      <span className="text-emerald-500 font-bold">[9 PM]</span>
+                      <span className="text-emerald-500 font-bold">[8 PM]</span>
                       <span className="text-white">init_portal();</span>
                     </div>
                   </div>
@@ -152,9 +152,9 @@ const App = () => {
                   </div>
 
                   <div className="mt-4 pt-4 border-t border-emerald-500/10">
-                    <span className="text-red-500/40 font-bold block mb-1 underline text-xs">// Purge Protocol @ 09:00 IST</span>
+                    <span className="text-red-500/40 font-bold block mb-1 underline text-xs">// Purge Protocol @ 08:00 IST</span>
                     <div className="flex gap-3 items-center mb-2">
-                      <span className="text-red-500 font-bold">[9 AM]</span>
+                      <span className="text-red-500 font-bold">[12 AM]</span>
                       <span className="text-red-400 uppercase font-black text-[10px] px-1.5 py-0.5 border border-red-500/30 rounded">purge_all()</span>
                     </div>
                     <p className="text-emerald-500/60 text-xs">$ rm -rf /data/nightly_records/*</p>
