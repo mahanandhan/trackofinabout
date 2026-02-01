@@ -218,7 +218,7 @@ const App = () => {
           </p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-6">
             <a 
-              href="https://instagram.com/trackofin" 
+              href="https://instagram.com/trakofin" 
               className="flex items-center gap-3 px-10 py-5 bg-emerald-500 text-black font-black text-xl rounded-full hover:shadow-[0_0_40px_rgba(16,185,129,0.5)] transition-all hover:scale-105 group"
             >
               <Instagram className="group-hover:rotate-12 transition-transform" /> @trackofin
